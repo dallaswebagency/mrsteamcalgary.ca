@@ -27,6 +27,8 @@
     <symbol id="i-tag" viewBox="0 0 32 32"><path d="M4 16V5h11l13 13-11 11z"/><circle cx="10" cy="11" r="2"/></symbol>
     <symbol id="i-check" viewBox="0 0 32 32"><path d="M6 17l7 7L26 9"/></symbol>
     <symbol id="i-truck" viewBox="0 0 32 32"><path d="M3 8h16v14H3zM19 13h6l4 4v5h-10"/><circle cx="9" cy="23" r="2.4"/><circle cx="24" cy="23" r="2.4"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
   </defs>
 </svg>
 
@@ -43,7 +45,7 @@
       <a href="../#contact">Contact</a>
       <a class="btn btn-primary" style="color:#fff;margin-left:8px;padding:12px 22px;font-size:17px" href="./" aria-current="page">Book now <svg><use href="#i-arrow"/></svg></a>
     </nav>
-    <a class="call" href="tel:+15878993890" aria-label="Call or text (587) 899-3890"><i><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg></i><span><small>CALL OR TEXT</small>(587) 899-3890</span></a>
+    <a class="call ct" href="tel:+15878993890" aria-haspopup="true"><i><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg></i><span><small>NEED A QUOTE?</small>Call or text</span></a>
   </div>
 </header>
 
@@ -84,7 +86,7 @@
           <p id="need" class="fine" style="color:var(--red);font-weight:700" hidden>Pick at least one item to continue.</p>
           <div class="card2" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between">
             <div><b style="font:600 20px var(--ui);color:var(--navy)">Need a custom quote?</b><br><span style="color:var(--muted)">Have a unique request? Call or text and we'll be happy to help.</span></div>
-            <a class="btn btn-light" href="tel:+15878993890"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> (587) 899-3890</a>
+            <a class="btn btn-light ct" href="tel:+15878993890" aria-haspopup="true"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> Call or text</a>
           </div>
           <div class="nav-row"><span></span><button class="btn btn-primary btn-lg" type="button" data-next>Continue to details <svg><use href="#i-arrow"/></svg></button></div>
         </div>
@@ -143,7 +145,7 @@
               <div class="cta">
                 <a class="btn btn-primary btn-lg" id="send" href="#">Send by text <svg><use href="#i-chat"/></svg></a>
                 <button class="btn btn-light" type="button" id="copy">Copy details</button>
-                <a class="btn btn-light" href="tel:+15878993890"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> Call us</a>
+                <a class="btn btn-light ct" href="tel:+15878993890" aria-haspopup="true"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> Call or text</a>
               </div>
               <p class="fine" style="text-align:left;margin:0">Your messaging app opens with the booking written out, ready to send to (587) 899-3890. On a computer, use Copy details and text or call us.</p>
               <div class="ok" id="ok" role="status">Almost done! Press send in your messaging app and we'll reply to confirm your time.</div>
@@ -165,7 +167,7 @@
         </div>
         <div class="help">
           <b>Need help choosing?</b><p>Not sure what you need? We're happy to help.</p>
-          <a class="btn btn-light" href="tel:+15878993890"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> (587) 899-3890</a>
+          <a class="btn btn-light ct" href="tel:+15878993890" aria-haspopup="true"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> Call or text</a>
           <img src="../assets/img/genie.webp" alt="" width="325" height="520" loading="lazy" aria-hidden="true">
         </div>
       </aside>
@@ -175,15 +177,33 @@
 </main>
 
 <footer class="foot">
+  <div class="fx" data-bubbles="9" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="cols">
-      <div><img class="fl" src="../assets/img/logo.webp" alt="Steam Genie" width="800" height="595" loading="lazy"><p>Carpet cleaning, upholstery cleaning and area rugs in Calgary. Let the Genie do the dirty work!</p></div>
-      <div><h4>Services</h4><a href="#carpet">Carpet cleaning</a><a href="#upholstery">Upholstery cleaning</a><a href="#rugs">Area rugs</a></div>
-      <div><h4>Company</h4><a href="../">Home</a><a href="../#pricing">Pricing</a><a href="../#why">About</a><a href="../#faq">FAQ</a></div>
-      <div><h4>Contact</h4><a href="tel:+15878993890">(587) 899-3890</a><a href="https://steamgenie.ca">SteamGenie.ca</a><a href="sms:+15878993890">Text us</a></div>
+    <div class="fcta">
+      <div><b>Ready for a cleaner home?</b><span>Call or text for a free, no-obligation quote.</span></div>
+      <div class="cta">
+        <a class="btn btn-light ct" href="tel:+15878993890" aria-haspopup="true"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> Call or text</a>
+        <a class="btn btn-primary" href="../book-online/">Book online <svg><use href="#i-arrow"/></svg></a>
+      </div>
     </div>
+    <div class="cols">
+      <div class="fbrand">
+        <img class="fl" src="../assets/img/logo.webp" alt="Steam Genie" width="800" height="595" loading="lazy">
+        <p>Carpet cleaning, upholstery cleaning and area rugs for Calgary homes and businesses. Let the Genie do the dirty work!</p>
+        <a class="gbadge" href="../#reviews" aria-label="100 plus five star Google reviews"><span class="stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><b>100+</b> 5-star Google reviews</a>
+      </div>
+      <div><h4>Services</h4><a href="../book-online/#carpet">Carpet cleaning</a><a href="../book-online/#upholstery">Upholstery cleaning</a><a href="../book-online/#rugs">Area rug cleaning</a><a href="../#faq">Stain removal</a><a href="../#faq">Pet odour treatment</a><a href="../#faq">Commercial cleaning</a></div>
+      <div><h4>Quick links</h4><a href="../book-online/">Book online</a><a href="../#pricing">Pricing</a><a href="../#how">How it works</a><a href="../#reviews">Reviews</a><a href="../#faq">FAQ</a></div>
+      <div class="fcontact"><h4>Get in touch</h4>
+        <a class="ct" href="tel:+15878993890" aria-haspopup="true"><i><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg></i><span><small>Phone</small>Call or text us</span></a>
+        <a href="mailto:hello@steamgenie.ca"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-mail"/></svg></i><span><small>Email</small>hello@steamgenie.ca</span></a>
+        <span class="ploc"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-pin"/></svg></i><span><small>Service area</small>Calgary, Alberta and area</span></span>
+      </div>
+    </div>
+    <ul class="ftrust"><li>Eco-friendly products</li><li>Safe for pets &amp; kids</li><li>Homes &amp; businesses</li><li>Free quotes</li></ul>
     <div class="bar"><span>&copy; 2026 Steam Genie. All rights reserved.</span><span>Design by <a href="https://dallaswebagency.us/" target="_blank" rel="noopener">Dallas Web Agency</a></span></div>
   </div>
+  <img class="fgen" src="../assets/img/genie.webp" alt="" width="325" height="520" loading="lazy" aria-hidden="true">
 </footer>
 
 <div class="bbar"><div class="t">Estimate<b id="bt">No items yet</b></div><button class="btn btn-primary" id="bnext" type="button">Continue</button></div>

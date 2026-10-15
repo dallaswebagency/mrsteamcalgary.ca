@@ -31,6 +31,8 @@
     <symbol id="i-leaf" viewBox="0 0 32 32"><path d="M6 26C6 12 14 5 27 5c0 13-7 21-19 21z"/><path d="M6 26C12 18 17 14 22 11"/></symbol>
     <symbol id="i-cal" viewBox="0 0 32 32"><rect x="4" y="6" width="24" height="21" rx="3"/><path d="M4 12h24M10 3v6M22 3v6"/></symbol>
     <symbol id="i-bld" viewBox="0 0 32 32"><rect x="7" y="4" width="14" height="24" rx="1"/><path d="M21 12h4v16M11 9h2M15 9h2M11 14h2M15 14h2M11 19h2M15 19h2M12 28v-4h4v4"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
   </defs>
 </svg>
 
@@ -48,7 +50,7 @@
       <a href="#contact">Contact</a>
       <a class="btn btn-primary" style="color:#fff;margin-left:8px;padding:12px 22px;font-size:17px" href="book-online/">Book now <svg><use href="#i-arrow"/></svg></a>
     </nav>
-    <a class="call" href="tel:+15878993890" aria-label="Call or text (587) 899-3890"><i><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg></i><span><small>CALL OR TEXT</small>(587) 899-3890</span></a>
+    <a class="call ct" href="tel:+15878993890" aria-haspopup="true"><i><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg></i><span><small>NEED A QUOTE?</small>Call or text</span></a>
   </div>
 </header>
 
@@ -72,8 +74,9 @@
       </ul>
       <div class="cta">
         <a class="btn btn-gold btn-lg" href="book-online/">Book now <svg><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-light btn-lg" href="tel:+15878993890"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> (587) 899-3890</a>
+        <a class="btn btn-light btn-lg ct" href="tel:+15878993890" aria-haspopup="true"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> Call or text</a>
       </div>
+      <a class="rating" href="#reviews" aria-label="100 plus five star Google reviews"><span class="stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span><b>100+</b> 5-star Google reviews</span></a>
     </div>
     <div class="badges">
       <div class="badge"><svg viewBox="0 0 32 32" fill="none" stroke="#18b26b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-leaf"/></svg>Eco-friendly products</div>
@@ -129,6 +132,8 @@
     </div>
   </div>
 </section>
+
+<div class="ribwrap"><div class="ribbon" aria-hidden="true"><div class="track"><span>Carpet cleaning</span><i></i><span>Upholstery cleaning</span><i></i><span>Area rugs</span><i></i><span>Stain removal</span><i></i><span>Pet odour treatment</span><i></i><span>Eco-friendly</span><i></i><span>Carpet cleaning</span><i></i><span>Upholstery cleaning</span><i></i><span>Area rugs</span><i></i><span>Stain removal</span><i></i><span>Pet odour treatment</span><i></i><span>Eco-friendly</span><i></i><span>Carpet cleaning</span><i></i><span>Upholstery cleaning</span><i></i><span>Area rugs</span><i></i><span>Stain removal</span><i></i><span>Pet odour treatment</span><i></i><span>Eco-friendly</span><i></i><span>Carpet cleaning</span><i></i><span>Upholstery cleaning</span><i></i><span>Area rugs</span><i></i><span>Stain removal</span><i></i><span>Pet odour treatment</span><i></i><span>Eco-friendly</span><i></i></div></div></div>
 
 <!-- PRICING -->
 <section class="sec prices" id="pricing">
@@ -245,7 +250,7 @@
       <p class="lead">Get your free, no-obligation quote today. Fast, friendly and professional service.</p>
       <div class="cta" style="margin-top:24px">
         <a class="btn btn-gold btn-lg" href="book-online/">Book online <svg><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-light btn-lg" href="tel:+15878993890"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> Call or text</a>
+        <a class="btn btn-light btn-lg ct" href="tel:+15878993890" aria-haspopup="true"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> Call or text</a>
       </div>
       <img class="gen" src="assets/img/genie.webp" alt="" width="325" height="520" loading="lazy" aria-hidden="true">
     </div>
@@ -271,18 +276,36 @@
 </main>
 
 <footer class="foot">
+  <div class="fx" data-bubbles="9" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="cols">
-      <div><img class="fl" src="assets/img/logo.webp" alt="Steam Genie" width="800" height="595" loading="lazy"><p>Carpet cleaning, upholstery cleaning and area rugs in Calgary. Let the Genie do the dirty work!</p></div>
-      <div><h4>Services</h4><a href="book-online/#carpet">Carpet cleaning</a><a href="book-online/#upholstery">Upholstery cleaning</a><a href="book-online/#rugs">Area rugs</a><a href="#faq">Stain &amp; odour help</a></div>
-      <div><h4>Company</h4><a href="book-online/">Book online</a><a href="#pricing">Pricing</a><a href="#why">About</a><a href="#faq">FAQ</a></div>
-      <div><h4>Contact</h4><a href="tel:+15878993890">(587) 899-3890</a><a href="https://steamgenie.ca">SteamGenie.ca</a><a href="sms:+15878993890">Text us</a></div>
+    <div class="fcta">
+      <div><b>Ready for a cleaner home?</b><span>Call or text for a free, no-obligation quote.</span></div>
+      <div class="cta">
+        <a class="btn btn-light ct" href="tel:+15878993890" aria-haspopup="true"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> Call or text</a>
+        <a class="btn btn-primary" href="book-online/">Book online <svg><use href="#i-arrow"/></svg></a>
+      </div>
     </div>
+    <div class="cols">
+      <div class="fbrand">
+        <img class="fl" src="assets/img/logo.webp" alt="Steam Genie" width="800" height="595" loading="lazy">
+        <p>Carpet cleaning, upholstery cleaning and area rugs for Calgary homes and businesses. Let the Genie do the dirty work!</p>
+        <a class="gbadge" href="#reviews" aria-label="100 plus five star Google reviews"><span class="stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><b>100+</b> 5-star Google reviews</a>
+      </div>
+      <div><h4>Services</h4><a href="book-online/#carpet">Carpet cleaning</a><a href="book-online/#upholstery">Upholstery cleaning</a><a href="book-online/#rugs">Area rug cleaning</a><a href="#faq">Stain removal</a><a href="#faq">Pet odour treatment</a><a href="#faq">Commercial cleaning</a></div>
+      <div><h4>Quick links</h4><a href="book-online/">Book online</a><a href="#pricing">Pricing</a><a href="#how">How it works</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a></div>
+      <div class="fcontact"><h4>Get in touch</h4>
+        <a class="ct" href="tel:+15878993890" aria-haspopup="true"><i><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg></i><span><small>Phone</small>Call or text us</span></a>
+        <a href="mailto:hello@steamgenie.ca"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-mail"/></svg></i><span><small>Email</small>hello@steamgenie.ca</span></a>
+        <span class="ploc"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-pin"/></svg></i><span><small>Service area</small>Calgary, Alberta and area</span></span>
+      </div>
+    </div>
+    <ul class="ftrust"><li>Eco-friendly products</li><li>Safe for pets &amp; kids</li><li>Homes &amp; businesses</li><li>Free quotes</li></ul>
     <div class="bar"><span>&copy; 2026 Steam Genie. All rights reserved.</span><span>Design by <a href="https://dallaswebagency.us/" target="_blank" rel="noopener">Dallas Web Agency</a></span></div>
   </div>
+  <img class="fgen" src="assets/img/genie.webp" alt="" width="325" height="520" loading="lazy" aria-hidden="true">
 </footer>
 
-<div class="mbar"><a class="btn btn-light" href="tel:+15878993890"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> Call</a><a class="btn btn-primary" href="book-online/">Book now</a></div>
+<div class="mbar"><a class="btn btn-light ct" href="tel:+15878993890" aria-haspopup="true"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> Call or text</a><a class="btn btn-primary" href="book-online/">Book now</a></div>
 
 <script src="assets/app.js"></script>
 </body>
