@@ -1,16 +1,10 @@
-Mr. Steam Calgary - website redesign
+Steam Genie website (SteamGenie.ca)
 
-Open index.html in any browser (works offline except Google Fonts).
-Pages (same file, hash routes):
-  index.html            Home
-  index.html#/book      Book Online
-  index.html#/about     About
-  index.html#/faq       FAQ
-  index.html#/carpet    Carpet cleaning
-  index.html#/upholstery Couch + upholstery
-  index.html#/rugs      Rug cleaning
-  index.html#/mattress  Mattress cleaning
-  index.html#/commercial Commercial carpet
+index.html            Home page
+book-online/index.html  4-step Book Online page (estimate + text-message request)
+assets/style.css, book.css, app.js, book.js
+assets/img/, assets/fonts/
 
-Upload the whole folder (index.html + assets/) to any static host.
-Booking requests are sent by SMS / email to (403) 702-6317 / MrSteamCalgary@gmail.com; no data is stored.
+Phone: (587) 899-3890. Booking requests open the visitor's messaging app with the details filled in.
+To change prices, edit the CATS list at the top of assets/book.js and the price cards in index.html.
+Upload the whole folder to any static host.
