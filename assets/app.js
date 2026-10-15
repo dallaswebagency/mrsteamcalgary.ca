@@ -207,3 +207,13 @@
   if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { es[0].isIntersecting ? play() : stop(); }, { threshold: 0.2 }).observe(root);
   go(0);
 })();
+
+/* FAQ: one answer open at a time */
+(function(){
+  var d = document.querySelectorAll(".faq details");
+  d.forEach(function(el){
+    el.addEventListener("toggle", function(){
+      if (el.open) d.forEach(function(o){ if (o !== el) o.open = false; });
+    });
+  });
+})();
