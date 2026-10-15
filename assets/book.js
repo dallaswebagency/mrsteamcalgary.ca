@@ -100,6 +100,7 @@
       li.classList.toggle("cur", i === n - 1); li.classList.toggle("done", i < n - 1);
       if (i === n - 1) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
     });
+    document.body.classList.toggle("thanks", n === 5);
     if (n === 4) buildReview();
     gate();
     if (!quiet) { var tgt = $("#wizard"); window.scrollTo({ top: tgt.getBoundingClientRect().top + window.pageYOffset - 90, behavior: "smooth" }); }
@@ -134,10 +135,34 @@
   items.forEach(function (li, i) { li.addEventListener("click", function () { if (li.classList.contains("done")) show(i + 1); }); });
   document.addEventListener("input", function (e) { var w = e.target.closest && e.target.closest(".fld"); if (w) w.classList.remove("bad"); });
 
+  // photos (step 2)
+  var photos = [], MAXP = 6, MAXMB = 12, pin = $("#d-photos"), pth = $("#d-thumbs"), perr = $("#d-photo-err");
+  function thumbs() {
+    pth.innerHTML = "";
+    photos.forEach(function (file, idx) {
+      var li = document.createElement("li"), im = document.createElement("img"), bt = document.createElement("button");
+      im.alt = "Selected photo " + (idx + 1); im.src = URL.createObjectURL(file);
+      bt.type = "button"; bt.setAttribute("aria-label", "Remove photo " + (idx + 1)); bt.innerHTML = "&times;";
+      bt.addEventListener("click", function () { photos.splice(idx, 1); thumbs(); });
+      li.appendChild(im); li.appendChild(bt); pth.appendChild(li);
+    });
+  }
+  pin.addEventListener("change", function () {
+    perr.style.display = "none"; perr.textContent = "";
+    Array.prototype.forEach.call(pin.files, function (file) {
+      if (!/^image\//.test(file.type)) { perr.textContent = "Only image files can be added."; perr.style.display = "block"; return; }
+      if (file.size > MAXMB * 1048576) { perr.textContent = "Each photo must be under " + MAXMB + " MB."; perr.style.display = "block"; return; }
+      if (photos.length >= MAXP) { perr.textContent = "You can add up to " + MAXP + " photos."; perr.style.display = "block"; return; }
+      photos.push(file);
+    });
+    pin.value = ""; thumbs();
+  });
+  function photoLine() { return photos.length ? "\n\nPHOTOS\nI have " + photos.length + " photo" + (photos.length > 1 ? "s" : "") + " to send in this chat." : ""; }
+
   // review + send
   var SLOTS = { morning: "Morning", afternoon: "Afternoon", evening: "Evening", flex: "Flexible" };
   function pretty(d) { try { return new Date(d + "T12:00:00").toLocaleDateString("en-CA", { weekday: "long", month: "long", day: "numeric", year: "numeric" }); } catch (e) { return d; } }
-  function message() {
+  function message(withPhotoLine) {
     var T = totals(), s = $('input[name="slot"]:checked');
     var m = "Hi Steam Genie! I'd like to book a cleaning.\n\nSERVICES\n" +
       T.L.map(function (l) { return l.n + " x " + l.name + " (" + l.kind + ")"; }).join("\n") +
@@ -146,7 +171,7 @@
       "\nProperty: " + val("d-type") + "\nPets: " + val("d-pets") +
       "\n\nPREFERRED TIME\n" + pretty(val("d-date")) + ", " + (s ? SLOTS[s.value] : "") +
       (val("d-alt") ? "\nBackup date: " + pretty(val("d-alt")) : "") +
-      (val("d-notes") ? "\n\nNOTES\n" + val("d-notes") : "");
+      (val("d-notes") ? "\n\nNOTES\n" + val("d-notes") : "") + (withPhotoLine ? photoLine() : "");
     return m;
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
@@ -158,12 +183,31 @@
       (val("d-email") ? "<dt>Email</dt><dd>" + esc(val("d-email")) + "</dd>" : "") +
       "<dt>Address</dt><dd>" + esc(val("d-addr")) + "</dd><dt>Property</dt><dd>" + esc(val("d-type")) + "</dd><dt>Pets</dt><dd>" + esc(val("d-pets")) + "</dd>" +
       "<dt>When</dt><dd>" + esc(pretty(val("d-date"))) + ", " + (s ? SLOTS[s.value] : "") + "</dd>" +
-      (val("d-notes") ? "<dt>Notes</dt><dd>" + esc(val("d-notes")) + "</dd>" : "");
-    var m = message();
+      (val("d-notes") ? "<dt>Notes</dt><dd>" + esc(val("d-notes")) + "</dd>" : "") +
+      (photos.length ? "<dt>Photos</dt><dd>" + photos.length + " added</dd>" : "");
+    var m = message(true);
     $("#send").href = SG.smsHref(m);
     $("#copy").onclick = function () { SG.copy(m, this); };
+    $("#copy2").onclick = function () { SG.copy(m, this); };
   }
-  $("#send").addEventListener("click", function () { $("#ok").classList.add("on"); });
+  $("#send").addEventListener("click", function (e) {
+    var body = message(false), canShare = photos.length && navigator.canShare && navigator.share && navigator.canShare({ files: photos });
+    if (canShare) {
+      e.preventDefault();
+      navigator.share({ title: "Steam Genie booking request", text: body, files: photos })
+        .then(function () { thanks(); })
+        .catch(function (err) { if (err && err.name === "AbortError") return; window.location.href = SG.smsHref(message(true)); thanks(); });
+    } else {
+      thanks();
+    }
+  });
+  function thanks() {
+    setTimeout(function () {
+      show(5, true);
+      var p = $("#p5"); window.scrollTo({ top: $("#wizard").getBoundingClientRect().top + window.pageYOffset - 80, behavior: "smooth" });
+      try { p.focus({ preventScroll: true }); } catch (e) {}
+    }, 400);
+  }
 
   // date limits
   var today = new Date(), iso = function (d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); };

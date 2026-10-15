@@ -115,6 +115,13 @@
               <div class="fld"><label for="d-type">Property type</label><select id="d-type"><option>House</option><option>Condo or apartment</option><option>Townhouse</option><option>Commercial space</option></select></div>
               <div class="fld"><label for="d-pets">Pets at home?</label><select id="d-pets"><option>No pets</option><option>Yes, cats or dogs</option><option>Other pets</option></select></div>
             </div>
+            <div class="fld">
+              <label>Photos (optional)</label>
+              <label class="drop" for="d-photos"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a3 3 0 0 1 3-3h2.5l1.8-2.5h5.4L18.5 8H21a3 3 0 0 1 3 3v11a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z" transform="translate(2 0)"/><circle cx="15" cy="16.5" r="4"/></svg><span><b>Add photos of your carpet or furniture</b><small>Tap to choose or take photos (up to 6)</small></span></label>
+              <input id="d-photos" type="file" accept="image/*" multiple class="sr">
+              <ul class="thumbs" id="d-thumbs" aria-live="polite"></ul>
+              <span class="err" id="d-photo-err"></span>
+            </div>
             <div class="fld" style="margin-bottom:0"><label for="d-notes">Anything we should know? (optional)</label><textarea id="d-notes" placeholder="Stains, odours, parking, access, stairs..."></textarea></div>
           </div>
           <div class="nav-row"><button class="btn btn-light" type="button" data-back>Back</button><button class="btn btn-primary btn-lg" type="button" data-next>Continue to date &amp; time <svg><use href="#i-arrow"/></svg></button></div>
@@ -156,12 +163,32 @@
                 <button class="btn btn-light" type="button" id="copy">Copy details</button>
                 <a class="btn btn-light ct" href="tel:+15878993890" aria-haspopup="true"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> Call or text</a>
               </div>
-              <p class="fine" style="text-align:left;margin:0">Your messaging app opens with the booking written out, ready to send to (587) 899-3890. On a computer, use Copy details and text or call us.</p>
-              <div class="ok" id="ok" role="status">Almost done! Press send in your messaging app and we'll reply to confirm your time.</div>
+              <p class="fine" style="text-align:left;margin:0">Your messaging app opens with the booking written out, ready to send to (587) 899-3890. Photos you added are shared along with it on phones that support it; otherwise attach them in the same chat. On a computer, use Copy details and text or call us.</p>
+              <p class="fine" id="photo-note" style="text-align:left;margin:0" hidden></p>
             </div>
           </div>
           <div class="nav-row"><button class="btn btn-light" type="button" data-back>Back</button><span></span></div>
         </div>
+        <!-- THANK YOU -->
+        <div class="panel" id="p5" tabindex="-1">
+          <div class="card2 tkcard">
+            <div class="tk-art"><img src="../assets/img/genie.webp" alt="" width="325" height="520" aria-hidden="true"><span class="tk-ok"><svg viewBox="0 0 32 32"><use href="#i-check"/></svg></span></div>
+            <h2>Thank you!</h2>
+            <p class="tk-lead">We got your request and will get back to you within a few hours to talk about the next steps.</p>
+            <ul class="tk-steps">
+              <li><i>1</i><span><b>We review your request</b>We check your items, photos and preferred time.</span></li>
+              <li><i>2</i><span><b>We text you back</b>We confirm a time that works and answer any questions.</span></li>
+              <li><i>3</i><span><b>The Genie cleans</b>Fresh, clean carpets and furniture.</span></li>
+            </ul>
+            <p class="fine tk-fine">Messaging app didn't open or the message didn't send? Use Copy details below, or call or text (587) 899-3890.</p>
+            <div class="cta" style="justify-content:center">
+              <button class="btn btn-light" type="button" id="copy2">Copy details</button>
+              <a class="btn btn-primary ct" href="tel:+15878993890" aria-haspopup="true"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg> Call or text</a>
+              <a class="btn btn-light" href="../">Back to home</a>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <aside class="side" aria-label="Your booking">

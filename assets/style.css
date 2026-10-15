@@ -702,3 +702,6 @@ details p{padding:0 22px 20px 76px}
 .card.c-gold .btn{color:var(--navy)}
 .card .tx{position:relative}
 .card .tx::before{content:"";position:absolute;left:22px;right:22px;top:0;height:5px;border-radius:5px;background:linear-gradient(90deg,var(--tint),var(--tint2))}
+.about .frame{position:relative}
+.about .frame .crew{position:absolute;left:14px;bottom:14px;display:inline-flex;gap:8px;align-items:center;background:#fff;border:3px solid var(--navy);border-radius:999px;box-shadow:0 4px 0 var(--navy);padding:7px 16px 7px 10px;font:700 16px var(--ui);color:var(--navy)}
+.about .frame .crew svg{width:22px;height:22px;stroke:var(--blue2);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
