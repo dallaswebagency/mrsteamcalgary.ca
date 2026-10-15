@@ -1,12 +1,12 @@
 /* Steam Genie - booking wizard (builds a text-message request, no server) */
 (function () {
   var CATS = [
-    { id: "carpet", title: "Carpet cleaning", icon: "i-carpet", items: [
+    { id: "carpet", title: "Carpet cleaning", icon: "i-carpet", img: "carpet.webp", tint: "blue", items: [
       ["Bedroom", "up to 150 sq ft", 69], ["Large bedroom", "up to 250 sq ft", 99],
       ["Living room", "up to 350 sq ft", 129], ["Basement / large area", "", 199]] },
-    { id: "upholstery", title: "Upholstery cleaning", icon: "i-sofa", items: [
+    { id: "upholstery", title: "Upholstery cleaning", icon: "i-sofa", img: "upholstery.webp", tint: "gold", items: [
       ["Sofa", "up to 7 ft", 99], ["Loveseat", "", 79], ["Chair", "", 59], ["Sectional", "", 149]] },
-    { id: "rugs", title: "Area rug cleaning", icon: "i-rug", items: [
+    { id: "rugs", title: "Area rug cleaning", icon: "i-rug", img: "rugs.webp", tint: "green", items: [
       ["Small rug", "up to 5 x 8 ft", 59], ["Medium rug", "up to 8 x 10 ft", 89],
       ["Large rug", "up to 9 x 12 ft", 129], ["Extra large rug", "10 x 14 ft and up", 199]] }
   ];
@@ -18,27 +18,45 @@
   // build services panel
   var host = $("#cats"), html = "";
   CATS.forEach(function (c) {
-    html += '<section class="cat" id="' + c.id + '"><header><i><svg viewBox="0 0 32 32"><use href="#' + c.icon + '"/></svg></i><h3>' + c.title + "</h3></header>";
+    html += '<section class="cat t-' + c.tint + '" id="' + c.id + '"><header><button type="button" class="chead" aria-expanded="true" aria-controls="b-' + c.id + '"><img src="../assets/img/' + c.img + '" alt="" aria-hidden="true"><i><svg viewBox="0 0 32 32"><use href="#' + c.icon + '"/></svg></i><h3>' + c.title + '</h3><span class="cnt" data-cnt="' + c.id + '"></span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button></header><div class="cbody" id="b-' + c.id + '">';
     c.items.forEach(function (it, i) {
       var k = c.id + "|" + i;
-      html += '<div class="row"><div class="nm"><b>' + it[0] + "</b>" + (it[1] ? "<small>" + it[1] + "</small>" : "") + "<em><span>Starting at</span> " + money(it[2]) + "</em></div>" +
+      html += '<div class="row" data-p="' + it[2] + '"><span class="ri"><svg viewBox="0 0 32 32"><use href="#' + c.icon + '"/></svg></span><div class="nm"><b>' + it[0] + "</b>" + (it[1] ? "<small>" + it[1] + "</small>" : "") + "<em><span>Starting at</span> " + money(it[2]) + "</em></div>" +
         ["std", "hvy"].map(function (t) {
           return '<div class="qty"><span class="lb">' + (t === "std" ? "Standard<small>Good condition</small>" : "Heavy Duty<small>Pet hair, stains or odours</small>") + "</span>" +
             '<span class="stp" data-k="' + k + "|" + t + '"><button type="button" class="m" aria-label="Remove one ' + it[0] + " " + (t === "std" ? "standard" : "heavy duty") + '" disabled>&minus;</button><output>0</output><button type="button" class="p" aria-label="Add one ' + it[0] + " " + (t === "std" ? "standard" : "heavy duty") + '">+</button></span></div>';
         }).join("") + "</div>";
     });
-    html += "</section>";
+    html += "</div></section>";
   });
   host.innerHTML = html;
 
   host.addEventListener("click", function (e) {
     var b = e.target.closest("button"); if (!b) return;
+    if (b.classList.contains("chead")) {
+      var sec = b.closest(".cat"), shut = sec.classList.toggle("shut");
+      b.setAttribute("aria-expanded", shut ? "false" : "true"); return;
+    }
     var s = b.closest(".stp"), k = s.getAttribute("data-k"), n = qty[k] || 0;
     n = b.classList.contains("p") ? Math.min(n + 1, 20) : Math.max(n - 1, 0);
     qty[k] = n; s.querySelector("output").textContent = n;
     s.querySelector(".m").disabled = n === 0;
+    rowState(s.closest(".row"));
     render();
   });
+
+
+  function rowState(row) {
+    var n = 0;
+    $$(".stp", row).forEach(function (st) { n += qty[st.getAttribute("data-k")] || 0; });
+    row.classList.toggle("sel", n > 0);
+    var tag = $(".rt", row);
+    if (!tag) { tag = document.createElement("span"); tag.className = "rt"; row.appendChild(tag); }
+    tag.textContent = n ? n + " selected = " + money(n * (+row.getAttribute("data-p"))) : "";
+    var cat = row.closest(".cat"), c = 0;
+    $$(".stp", cat).forEach(function (st) { c += qty[st.getAttribute("data-k")] || 0; });
+    var badge = $(".cnt", cat); badge.textContent = c ? c + " added" : ""; badge.classList.toggle("on", c > 0);
+  }
 
   function lines() {
     var out = [];

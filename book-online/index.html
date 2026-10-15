@@ -30,6 +30,7 @@
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
   </defs>
+    <symbol id="i-star" viewBox="0 0 32 32"><path d="M16 4l3.700 7.800 8.300 1-6.200 5.800 1.700 8.400L16 22.700 8.500 27l1.700-8.400L4 12.800l8.300-1z"/></symbol>
 </svg>
 
 <header class="top" id="top">
@@ -84,6 +85,12 @@
         <div class="panel on" id="p1">
           <h2>1. Choose your cleaning services</h2>
           <p class="hint">Select the items you'd like cleaned. Prices shown are starting prices.</p>
+          <nav class="jump" aria-label="Jump to a service">
+            <a href="#carpet"><svg viewBox="0 0 32 32"><use href="#i-carpet"/></svg>Carpet</a>
+            <a href="#upholstery"><svg viewBox="0 0 32 32"><use href="#i-sofa"/></svg>Upholstery</a>
+            <a href="#rugs"><svg viewBox="0 0 32 32"><use href="#i-rug"/></svg>Area rugs</a>
+          </nav>
+          <p class="legend"><span><i class="d1"></i>Standard: good condition</span><span><i class="d2"></i>Heavy Duty: pet hair, stains or odours</span></p>
           <div id="cats"></div>
           <p id="need" class="fine" style="color:var(--red);font-weight:700" hidden>Pick at least one item to continue.</p>
           <div class="card2" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between">
@@ -166,6 +173,7 @@
           <div class="perk"><i><svg viewBox="0 0 32 32"><use href="#i-truck"/></svg></i><div><b>Professional equipment</b><span>Powerful, truck-mounted style cleaning.</span></div></div>
           <div class="perk"><i><svg viewBox="0 0 32 32"><use href="#i-leaf"/></svg></i><div><b>Eco-friendly products</b><span>Safe for your family, pets and the environment.</span></div></div>
           <div class="perk"><i><svg viewBox="0 0 32 32"><use href="#i-paw"/></svg></i><div><b>Pet &amp; kid safe</b><span>Tell us about your furry friends when you book.</span></div></div>
+          <div class="perk"><i class="gold"><svg viewBox="0 0 32 32"><use href="#i-star"/></svg></i><div><b><span class="stars mini" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span> 100+ Google reviews</b><span>Rated 5 stars by Calgary homeowners.</span></div></div>
         </div>
         <div class="help">
           <b>Need help choosing?</b><p>Not sure what you need? We're happy to help.</p>
