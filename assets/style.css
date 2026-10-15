@@ -524,3 +524,89 @@ html,body{overflow-x:clip}
 .soc{flex-wrap:nowrap;gap:8px}
 .foot .soc a{width:42px;height:42px;flex:none}
 @media (max-width:360px){.soc{gap:6px}.foot .soc a{width:38px;height:38px}}
+
+/* ===== v3: about icons, why us, pricing, 2-row reviews ===== */
+.astats div{position:relative;padding-top:30px;margin-top:22px}
+.astats i{position:absolute;left:50%;top:-22px;translate:-50% 0;width:46px;height:46px;border-radius:50%;background:linear-gradient(#45b0ff,#1479f0);border:3px solid var(--navy);box-shadow:0 3px 0 var(--navy);display:grid;place-items:center;transition:transform .3s}
+.astats i svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.astats div:nth-child(2) i{background:linear-gradient(#ffd75e,#ffb800)}
+.astats div:nth-child(2) i svg{stroke:var(--navy)}
+.astats div:nth-child(3) i{background:linear-gradient(#5be39b,#17b46a)}
+.astats div:hover i{transform:rotate(-12deg) scale(1.12)}
+.astats i{animation:bob5 3.4s ease-in-out infinite}
+.astats div:nth-child(2) i{animation-delay:.4s}.astats div:nth-child(3) i{animation-delay:.8s}
+@keyframes bob5{50%{transform:translateY(-5px)}}
+
+.why{position:relative;overflow:hidden}
+.wcard{position:relative;overflow:hidden;padding:30px 24px 26px}
+.wcard::before{content:"";position:absolute;left:0;right:0;top:0;height:8px;background:var(--tint,#1479f0)}
+.wcard::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-20deg);transition:left .8s}
+.wcard:hover::after{left:130%}
+.wn{position:absolute;right:16px;top:14px;font:800 64px/1 var(--head);color:var(--tint,#1479f0);opacity:.13}
+.wi{width:76px;height:76px;position:relative;background:linear-gradient(var(--tint2,#45b0ff),var(--tint,#1479f0))}
+.wi::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:2px dashed var(--tint,#1479f0);opacity:.5;animation:spin 14s linear infinite}
+@keyframes spin{to{rotate:360deg}}
+.wi svg{width:38px;height:38px}
+.c-green{--tint:#17b46a;--tint2:#5be39b}.c-pink{--tint:#f0568c;--tint2:#ff93b6}.c-blue{--tint:#1479f0;--tint2:#45b0ff}
+.c-gold{--tint:#f2a900;--tint2:#ffd75e}.c-teal{--tint:#0fb5c4;--tint2:#5fe0ea}.c-purple{--tint:#7a5af5;--tint2:#a995ff}
+.wcard h3{color:var(--navy)}
+.wstrip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:34px;background:linear-gradient(135deg,#082c6b,#1479f0);border:3px solid var(--navy);border-radius:var(--r);box-shadow:var(--pop);padding:18px 20px}
+.wstrip div{display:flex;align-items:center;gap:12px;color:#fff;font:500 15px/1.25 var(--ui)}
+.wstrip b{display:block;font:700 18px var(--ui);color:#ffd75e}
+.wstrip svg{flex:none;width:44px;height:44px;padding:9px;border-radius:50%;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.6);stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;animation:bob5 3.2s ease-in-out infinite}
+.wstrip div:nth-child(2) svg{animation-delay:.3s}.wstrip div:nth-child(3) svg{animation-delay:.6s}.wstrip div:nth-child(4) svg{animation-delay:.9s}
+
+.prices{position:relative;overflow:hidden}
+.pgrid{align-items:stretch;gap:28px}
+.pcard{padding:0;overflow:hidden;display:flex;flex-direction:column;--t1:#45b0ff;--t2:#1479f0}
+.pcard.p-up{--t1:#ffd75e;--t2:#f2a900}
+.pcard.p-rug{--t1:#5be39b;--t2:#17b46a}
+.ph2{position:relative;display:flex;gap:14px;align-items:center;padding:20px 22px;background:linear-gradient(135deg,var(--t1),var(--t2));border-bottom:3px solid var(--navy);overflow:hidden}
+.ph2::after{content:"";position:absolute;top:0;left:-50%;width:35%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite}
+@keyframes shine{0%,55%{left:-50%}100%{left:140%}}
+.pi{flex:none;width:62px;height:62px;border-radius:50%;background:#fff;border:3px solid var(--navy);box-shadow:0 4px 0 var(--navy);display:grid;place-items:center;animation:bob5 3.4s ease-in-out infinite}
+.pi svg{width:32px;height:32px;stroke:var(--navy);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ph2 h3{font-size:32px;color:#fff;text-shadow:0 3px 0 rgba(3,26,70,.55)}
+.pcard.p-up .ph2 h3{color:var(--navy);text-shadow:none}
+.ph2 p{font:500 15px/1.2 var(--ui);color:rgba(255,255,255,.95);margin-top:3px}
+.pcard.p-up .ph2 p{color:var(--navy)}
+.pcard ul{margin:0;padding:8px 22px 4px;flex:1}
+.pcard li{align-items:center;justify-content:flex-start;gap:12px;transition:background .2s,transform .2s;border-radius:12px;padding:12px 8px;margin:0 -8px}
+.pcard li:hover{background:var(--ice);transform:translateX(5px)}
+.pcard li>i{flex:none;width:26px;height:26px}
+.pcard li>i svg{width:26px;height:26px;stroke:var(--t2);fill:none;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.pcard li>span{flex:1;min-width:0}
+.pcard li b{display:inline-flex;align-items:baseline;gap:5px;background:var(--ice);border:2px solid var(--navy);border-radius:999px;padding:3px 12px;font:800 22px var(--head);color:var(--navy);transition:transform .2s,background .2s}
+.pcard li b em{font:600 12px var(--ui);font-style:normal;color:var(--muted)}
+.pcard li:hover b{transform:scale(1.1) rotate(-3deg);background:var(--gold)}
+.pbtn{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 22px 22px;padding:12px;border-radius:999px;border:3px solid var(--navy);background:var(--navy);color:#fff;text-decoration:none;font:600 17px var(--ui);box-shadow:0 4px 0 rgba(8,44,107,.35);transition:transform .2s,background .2s}
+.pbtn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:3;transition:transform .2s}
+.pbtn:hover{background:var(--blue);transform:translateY(-3px)}
+.pbtn:hover svg{transform:translateX(5px)}
+.pnote{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+.pnote span{display:inline-flex;align-items:center;gap:10px;background:#fff;border:3px solid var(--navy);border-radius:999px;box-shadow:0 4px 0 var(--navy);padding:9px 18px 9px 12px;font:500 16px/1.25 var(--ui);color:var(--navy)}
+.pnote svg{flex:none;width:28px;height:28px;stroke:var(--blue2);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+.reviews{overflow:hidden}
+.marq{position:relative;margin-top:40px;display:grid;gap:22px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.mrow{overflow:hidden;padding:6px 0 12px}
+.mtrack{display:flex;width:max-content;animation:mq 46s linear infinite}
+.mrow.r .mtrack{animation-direction:reverse;animation-duration:54s}
+.marq:hover .mtrack,.marq:focus-within .mtrack{animation-play-state:paused}
+.mset{display:flex;gap:22px;padding-right:22px}
+@keyframes mq{to{transform:translateX(-50%)}}
+.mq{width:min(420px,82vw);flex:none;margin:0;padding:24px 24px 20px;gap:14px}
+.mq blockquote{font-size:clamp(18px,2vw,21px)}
+.mq.score{align-items:center;text-align:center}
+.mq.score .big{font-size:clamp(60px,8vw,84px)}
+.mq.cta-card{flex-direction:row;align-items:center;gap:14px;background:linear-gradient(135deg,#eaf8ff,#cfeaff)}
+.mq.cta-card img{width:84px;flex:none}
+.mq.cta-card b{font:800 24px/1.1 var(--head);color:var(--navy);display:block}
+.mq.cta-card p{font-size:15px;margin:6px 0 12px;color:var(--muted)}
+.mq.cta-card .btn{font-size:15px;padding:10px 16px}
+.mq.fresh{background:linear-gradient(135deg,#fff4c9,#ffe27a);justify-content:center}
+.mq.fresh .fi{width:54px;height:54px;border-radius:50%;background:#fff;border:3px solid var(--navy);display:grid;place-items:center;box-shadow:0 3px 0 var(--navy)}
+.mq.fresh .fi svg{width:28px;height:28px;stroke:var(--navy);fill:none;stroke-width:2.2;stroke-linejoin:round}
+@media (prefers-reduced-motion:reduce){.mtrack{animation:none}.mrow{overflow-x:auto}.mset[aria-hidden="true"]{display:none}}
+@media (max-width:960px){.wstrip{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.wstrip{grid-template-columns:1fr}.pnote span{font-size:15px}.ph2 h3{font-size:28px}.mq.cta-card img{display:none}.astats div{padding-top:30px}}
