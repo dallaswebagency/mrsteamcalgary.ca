@@ -688,3 +688,17 @@ details p{padding:0 22px 20px 76px}
 @media (prefers-reduced-motion:reduce){.steps::after{display:none}}
 .card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .how .hw .gen{width:104px;top:-6px;right:3%}
+
+/* services: colour-coded card borders */
+.card{border-color:var(--tint,#1479f0);box-shadow:0 8px 0 var(--tint,#1479f0)}
+.card:hover{box-shadow:0 14px 0 var(--tint,#1479f0)}
+.card .ico{background:linear-gradient(var(--tint2,#45b0ff),var(--tint,#1479f0))}
+.card .from{border-color:var(--tint,#1479f0);box-shadow:0 4px 0 var(--tint,#1479f0)}
+.card h3{color:var(--tint,#1479f0)}
+.card.c-gold h3{color:#c78500}
+.card .feat svg{stroke:var(--tint,#17b46a)}
+.card.c-gold .feat svg{stroke:#c78500}
+.card .btn{background:linear-gradient(var(--tint2,#45b0ff),var(--tint,#1479f0));border-color:var(--navy);color:#fff}
+.card.c-gold .btn{color:var(--navy)}
+.card .tx{position:relative}
+.card .tx::before{content:"";position:absolute;left:22px;right:22px;top:0;height:5px;border-radius:5px;background:linear-gradient(90deg,var(--tint),var(--tint2))}
