@@ -10,17 +10,42 @@
   var doc = document;
   doc.documentElement.classList.remove("no-js");
 
-  // mobile nav
+  // header: mobile menu sheet + services mega menu
   var top = doc.querySelector(".top"), burger = doc.querySelector(".burger");
+  var mq = window.matchMedia("(max-width: 960px)");
+  var hm = doc.querySelector(".has-mega"), mgBtn = hm && hm.querySelector(".mg-btn"), timer;
+  function setMega(open) {
+    if (!hm) return;
+    hm.classList.toggle("open", open);
+    mgBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  function setMenu(open) {
+    top.classList.toggle("open", open);
+    doc.body.classList.toggle("menu-open", open);
+    if (burger) { burger.setAttribute("aria-expanded", open ? "true" : "false"); burger.setAttribute("aria-label", open ? "Close menu" : "Open menu"); }
+    if (open) top.style.setProperty("--hh", top.offsetHeight + "px"); else setMega(false);
+  }
   if (burger) {
-    burger.addEventListener("click", function () {
-      var o = top.classList.toggle("open");
-      burger.setAttribute("aria-expanded", o ? "true" : "false");
-    });
-    doc.querySelectorAll(".nav a").forEach(function (a) {
-      a.addEventListener("click", function () { top.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); });
+    burger.addEventListener("click", function () { setMenu(!top.classList.contains("open")); });
+    doc.querySelectorAll(".nav a:not(.mg-link), .mega a").forEach(function (a) {
+      a.addEventListener("click", function () { setMega(false); if (mq.matches) setMenu(false); });
     });
   }
+  if (hm) {
+    mgBtn.addEventListener("click", function () { setMega(!hm.classList.contains("open")); });
+    hm.querySelector(".mg-link").addEventListener("click", function () { setMega(false); if (mq.matches) setMenu(false); });
+    var canHover = window.matchMedia("(hover: hover) and (min-width: 961px)");
+    hm.addEventListener("mouseenter", function () { if (canHover.matches) { clearTimeout(timer); setMega(true); } });
+    hm.addEventListener("mouseleave", function () { if (canHover.matches) timer = setTimeout(function () { setMega(false); }, 200); });
+    doc.addEventListener("click", function (e) { if (!mq.matches && !hm.contains(e.target)) setMega(false); });
+  }
+  doc.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    if (hm && hm.classList.contains("open")) { setMega(false); if (!mq.matches) mgBtn.focus(); }
+    else if (top.classList.contains("open")) { setMenu(false); burger.focus(); }
+  });
+  (mq.addEventListener ? mq.addEventListener.bind(mq, "change") : mq.addListener.bind(mq))(function () { setMenu(false); setMega(false); });
+  window.addEventListener("resize", function () { if (top.classList.contains("open")) top.style.setProperty("--hh", top.offsetHeight + "px"); });
 
   // scroll reveal (content stays visible if IntersectionObserver is missing)
   var rv = doc.querySelectorAll(".rv");
@@ -29,6 +54,16 @@
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
     }, { threshold: 0.12 });
     rv.forEach(function (el) { io.observe(el); });
+    // safety net: anything at or above the bottom of the screen is always shown (fast scrolling, anchor jumps)
+    var tick = false;
+    function sweep() {
+      tick = false;
+      rv.forEach(function (el) {
+        if (!el.classList.contains("in") && el.getBoundingClientRect().top < window.innerHeight * 0.95) { el.classList.add("in"); io.unobserve(el); }
+      });
+    }
+    window.addEventListener("scroll", function () { if (!tick) { tick = true; requestAnimationFrame(sweep); } }, { passive: true });
+    window.addEventListener("load", sweep);
   } else {
     rv.forEach(function (el) { el.classList.add("in"); });
   }

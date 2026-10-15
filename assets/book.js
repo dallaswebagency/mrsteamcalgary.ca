@@ -215,5 +215,6 @@
 
   // deep link (#carpet etc.)
   render(); show(1, true);
+  window.addEventListener("hashchange", function () { var el = location.hash && $(location.hash); if (el && el.classList.contains("cat")) { if (step !== 1) show(1, true); el.classList.remove("shut"); setTimeout(function () { el.scrollIntoView({ behavior: "smooth" }); }, 50); } });
   if (location.hash) setTimeout(function () { var el = $(location.hash); if (el && el.classList.contains("cat")) el.scrollIntoView(); }, 300);
 })();
