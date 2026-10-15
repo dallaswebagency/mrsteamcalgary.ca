@@ -252,3 +252,20 @@
     });
   });
 })();
+
+/* floating Genie helper (desktop): bobs up and down, says hello now and then, opens call-or-text */
+(function () {
+  var d = document;
+  if (!window.matchMedia || !matchMedia("(min-width: 961px)").matches) return;
+  var s = d.querySelector('script[src$="assets/app.js"]'); if (!s) return;
+  var src = s.getAttribute("src").replace("app.js", "img/genie.webp");
+  var m = d.createElement("div"); m.className = "mascot";
+  m.innerHTML = '<span class="bub" aria-hidden="true"></span><a class="ct" href="tel:+15878993890" aria-haspopup="true" aria-label="Call or text Steam Genie"><img src="' + src + '" alt="" width="325" height="520" loading="lazy"></a>';
+  d.body.appendChild(m);
+  var bub = m.querySelector(".bub"), lines = ["Need a quote?", "Let the Genie help!", "Call or text us!", "Free, no-obligation quotes"], i = 0, reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function talk() {
+    bub.textContent = lines[i++ % lines.length]; m.classList.add("talk");
+    setTimeout(function () { m.classList.remove("talk"); }, 4500);
+  }
+  if (!reduce) { setTimeout(function () { talk(); setInterval(talk, 22000); }, 4000); }
+})();
