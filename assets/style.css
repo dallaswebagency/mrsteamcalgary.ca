@@ -610,3 +610,8 @@ html,body{overflow-x:clip}
 @media (prefers-reduced-motion:reduce){.mtrack{animation:none}.mrow{overflow-x:auto}.mset[aria-hidden="true"]{display:none}}
 @media (max-width:960px){.wstrip{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.wstrip{grid-template-columns:1fr}.pnote span{font-size:15px}.ph2 h3{font-size:28px}.mq.cta-card img{display:none}.astats div{padding-top:30px}}
+
+/* "Starting at" price pills */
+.pcard li b{flex-direction:column;align-items:flex-end;gap:0;padding:4px 14px 5px;line-height:1;border-radius:18px;text-align:right}
+.pcard li b em{display:block;font:600 11px/1 var(--ui);letter-spacing:.02em;margin-bottom:2px;white-space:nowrap}
+.row .nm em span{font:500 12.5px var(--ui);color:var(--muted);margin-right:2px}

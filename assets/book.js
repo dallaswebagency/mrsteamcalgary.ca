@@ -21,7 +21,7 @@
     html += '<section class="cat" id="' + c.id + '"><header><i><svg viewBox="0 0 32 32"><use href="#' + c.icon + '"/></svg></i><h3>' + c.title + "</h3></header>";
     c.items.forEach(function (it, i) {
       var k = c.id + "|" + i;
-      html += '<div class="row"><div class="nm"><b>' + it[0] + "</b>" + (it[1] ? "<small>" + it[1] + "</small>" : "") + "<em>from " + money(it[2]) + "</em></div>" +
+      html += '<div class="row"><div class="nm"><b>' + it[0] + "</b>" + (it[1] ? "<small>" + it[1] + "</small>" : "") + "<em><span>Starting at</span> " + money(it[2]) + "</em></div>" +
         ["std", "hvy"].map(function (t) {
           return '<div class="qty"><span class="lb">' + (t === "std" ? "Standard<small>Good condition</small>" : "Heavy Duty<small>Pet hair, stains or odours</small>") + "</span>" +
             '<span class="stp" data-k="' + k + "|" + t + '"><button type="button" class="m" aria-label="Remove one ' + it[0] + " " + (t === "std" ? "standard" : "heavy duty") + '" disabled>&minus;</button><output>0</output><button type="button" class="p" aria-label="Add one ' + it[0] + " " + (t === "std" ? "standard" : "heavy duty") + '">+</button></span></div>';
@@ -65,11 +65,11 @@
       h = "<ul>" + T.L.map(function (l) {
         return "<li><span>" + l.n + " &times; " + l.name + "<small>" + l.kind + " &middot; " + l.cat + "</small></span><span>" + money(l.line) + "</span></li>";
       }).join("") + "</ul>" +
-        '<div class="tot"><span>Estimate from</span><b>' + money(T.total) + "</b></div>";
+        '<div class="tot"><span>Starting at</span><b>' + money(T.total) + "</b></div>";
     }
     h += '<div class="min"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2zm0-8h-2V7h2z"/></svg><span>Minimum service call is ' + money(MIN) + "." + (T.hvy ? " Heavy Duty items are priced after we see them, so your final price is confirmed by text." : " Final price is confirmed by text.") + "</span></div>";
     $$(".sumbody").forEach(function (el) { el.innerHTML = h; });
-    $("#bt").textContent = T.total ? "from " + money(T.total) : "No items yet";
+    $("#bt").textContent = T.total ? "Starting at " + money(T.total) : "No items yet";
     gate();
   }
 
@@ -123,7 +123,7 @@
     var T = totals(), s = $('input[name="slot"]:checked');
     var m = "Hi Steam Genie! I'd like to book a cleaning.\n\nSERVICES\n" +
       T.L.map(function (l) { return l.n + " x " + l.name + " (" + l.kind + ")"; }).join("\n") +
-      "\nEstimate from " + money(T.total) + "\n\nDETAILS\nName: " + val("d-name") + "\nPhone: " + val("d-phone") +
+      "\nStarting at " + money(T.total) + "\n\nDETAILS\nName: " + val("d-name") + "\nPhone: " + val("d-phone") +
       (val("d-email") ? "\nEmail: " + val("d-email") : "") + "\nAddress: " + val("d-addr") +
       "\nProperty: " + val("d-type") + "\nPets: " + val("d-pets") +
       "\n\nPREFERRED TIME\n" + pretty(val("d-date")) + ", " + (s ? SLOTS[s.value] : "") +
@@ -135,7 +135,7 @@
   function buildReview() {
     var T = totals(), s = $('input[name="slot"]:checked');
     $("#rv-serv").innerHTML = T.L.map(function (l) { return "<dt>" + l.n + " &times; " + esc(l.name) + "</dt><dd>" + l.kind + " &middot; " + money(l.line) + "</dd>"; }).join("") +
-      "<dt>Estimate from</dt><dd>" + money(T.total) + "</dd>";
+      "<dt>Starting at</dt><dd>" + money(T.total) + "</dd>";
     $("#rv-det").innerHTML = "<dt>Name</dt><dd>" + esc(val("d-name")) + "</dd><dt>Phone</dt><dd>" + esc(val("d-phone")) + "</dd>" +
       (val("d-email") ? "<dt>Email</dt><dd>" + esc(val("d-email")) + "</dd>" : "") +
       "<dt>Address</dt><dd>" + esc(val("d-addr")) + "</dd><dt>Property</dt><dd>" + esc(val("d-type")) + "</dd><dt>Pets</dt><dd>" + esc(val("d-pets")) + "</dd>" +
