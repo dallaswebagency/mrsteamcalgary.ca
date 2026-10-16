@@ -314,3 +314,8 @@ body.menu-open .mascot{display:none}
 
 .vframe{position:relative;aspect-ratio:16/9;border:4px solid var(--navy);border-radius:var(--r);overflow:hidden;box-shadow:0 8px 0 var(--navy);background:#000}.vframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 a.chip2{text-decoration:none}a.chip2:hover{background:var(--blue);color:#fff}
+
+.rico{display:grid;place-items:center;width:68px;height:68px;border-radius:20px;background:var(--gold,#ffc83d);border:4px solid var(--navy);box-shadow:0 5px 0 var(--navy);transform:rotate(-4deg)}
+.rico svg{width:36px;height:36px;fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.reason.flip .rico{transform:rotate(4deg)}
+.rico+.h2{margin-top:16px!important}
