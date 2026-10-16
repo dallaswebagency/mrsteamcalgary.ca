@@ -10,6 +10,29 @@
   var doc = document;
   doc.documentElement.classList.remove("no-js");
 
+  // about / faq dropdowns
+  doc.querySelectorAll(".has-dd").forEach(function (dd) {
+    var b = dd.querySelector(".dd-btn"), t;
+    function set(o) { dd.classList.toggle("open", o); b.setAttribute("aria-expanded", o ? "true" : "false"); }
+    b.addEventListener("click", function () { set(!dd.classList.contains("open")); });
+    var hov = window.matchMedia("(hover: hover) and (min-width: 961px)");
+    dd.addEventListener("mouseenter", function () { if (hov.matches) { clearTimeout(t); set(true); } });
+    dd.addEventListener("mouseleave", function () { if (hov.matches) t = setTimeout(function () { set(false); }, 200); });
+    doc.addEventListener("click", function (e) { if (!dd.contains(e.target)) set(false); });
+    dd.addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
+    dd.querySelectorAll(".dd a, .dd-link").forEach(function (a) { a.addEventListener("click", function () { set(false); if (mq.matches && top) top.classList.remove("open"), doc.body.classList.remove("menu-open"); }); });
+  });
+  // coupon sign-up
+  var cf = doc.querySelector("form[data-coupon]");
+  if (cf) cf.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var n = cf.elements.name, m = cf.elements.email, ok = true;
+    [n, m].forEach(function (i) { var bad = !i.value.trim() || (i.type === "email" && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value.trim())); i.closest(".fld").classList.toggle("bad", bad); if (bad) ok = false; });
+    if (!ok) return;
+    cf.querySelector("[data-coupon-out]").hidden = false;
+    location.href = "mailto:hello@steamgenie.ca?subject=" + encodeURIComponent("Coupon sign-up") + "&body=" + encodeURIComponent("Please add me to the Steam Genie coupon list.\nName: " + n.value.trim() + "\nEmail: " + m.value.trim());
+  });
+
   // header: mobile menu sheet + services mega menu
   var top = doc.querySelector(".top"), burger = doc.querySelector(".burger");
   var mq = window.matchMedia("(max-width: 960px)");
