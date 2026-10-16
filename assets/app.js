@@ -1,6 +1,6 @@
 /* Steam Genie - shared behaviour */
 (function () {
-  var PHONE_TEL = "+15878993890";
+  var PHONE_TEL = "+14037026317";
   // Put the real social page links here, then they replace the defaults on every page.
   var SOCIAL = { facebook: "", instagram: "", yelp: "", google: "", youtube: "" };
   Object.keys(SOCIAL).forEach(function (k) {
@@ -30,7 +30,7 @@
     [n, m].forEach(function (i) { var bad = !i.value.trim() || (i.type === "email" && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value.trim())); i.closest(".fld").classList.toggle("bad", bad); if (bad) ok = false; });
     if (!ok) return;
     cf.querySelector("[data-coupon-out]").hidden = false;
-    location.href = "mailto:hello@steamgenie.ca?subject=" + encodeURIComponent("Coupon sign-up") + "&body=" + encodeURIComponent("Please add me to the Steam Genie coupon list.\nName: " + n.value.trim() + "\nEmail: " + m.value.trim());
+    location.href = "mailto:MrSteamCalgary@gmail.com?subject=" + encodeURIComponent("Coupon sign-up") + "&body=" + encodeURIComponent("Please add me to the Steam Genie coupon list.\nName: " + n.value.trim() + "\nEmail: " + m.value.trim());
   });
 
   // franchise enquiry
@@ -41,7 +41,7 @@
     ["name", "email", "phone", "city"].forEach(function (k) { var i = el[k], bad = !i.value.trim() || (k === "email" && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value.trim())); i.closest(".fld").classList.toggle("bad", bad); if (bad) ok = false; });
     if (!ok) return;
     ff.querySelector("[data-franchise-out]").hidden = false;
-    location.href = "mailto:hello@steamgenie.ca?subject=" + encodeURIComponent("Franchise enquiry") + "&body=" + encodeURIComponent("Name: " + el.name.value.trim() + "\nEmail: " + el.email.value.trim() + "\nPhone: " + el.phone.value.trim() + "\nArea: " + el.city.value.trim() + "\n\n" + el.msg.value.trim());
+    location.href = "mailto:MrSteamCalgary@gmail.com?subject=" + encodeURIComponent("Franchise enquiry") + "&body=" + encodeURIComponent("Name: " + el.name.value.trim() + "\nEmail: " + el.email.value.trim() + "\nPhone: " + el.phone.value.trim() + "\nArea: " + el.city.value.trim() + "\n\n" + el.msg.value.trim());
   });
   // header: mobile menu sheet + services mega menu
   var top = doc.querySelector(".top"), burger = doc.querySelector(".burger");
@@ -188,12 +188,12 @@
 /* ---- extras: call-or-text menu, scroll progress, page-wide bubbles ---- */
 (function () {
   var d = document, reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var TEL = "tel:+15878993890", SMS = "sms:+15878993890";
+  var TEL = "tel:+14037026317", SMS = "sms:+14037026317";
 
   // Call or text menu
   var menu = d.createElement("div");
   menu.className = "ctmenu"; menu.hidden = true; menu.setAttribute("role", "menu");
-  menu.innerHTML = '<a role="menuitem" href="' + TEL + '"><i><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg></i><span><b>Call us</b><small>(587) 899-3890</small></span></a>' +
+  menu.innerHTML = '<a role="menuitem" href="' + TEL + '"><i><svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-phone"/></svg></i><span><b>Call us</b><small>(403) 702-6317</small></span></a>' +
     '<a role="menuitem" href="' + SMS + '?&body=' + encodeURIComponent("Hi Steam Genie! I'd like a cleaning quote.") + '"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><use href="#i-chat"/></svg></i><span><b>Text us</b><small>Opens your messages</small></span></a>';
   d.body.appendChild(menu);
   var openFor = null;
@@ -293,7 +293,7 @@
   var s = d.querySelector('script[src$="assets/app.js"]'); if (!s) return;
   var src = s.getAttribute("src").replace("app.js", "img/genie.webp");
   var m = d.createElement("div"); m.className = "mascot";
-  m.innerHTML = '<span class="bub" aria-hidden="true"></span><a class="ct" href="tel:+15878993890" aria-haspopup="true" aria-label="Call or text Steam Genie"><img src="' + src + '" alt="" width="325" height="520" loading="lazy"></a>';
+  m.innerHTML = '<span class="bub" aria-hidden="true"></span><a class="ct" href="tel:+14037026317" aria-haspopup="true" aria-label="Call or text Steam Genie"><img src="' + src + '" alt="" width="325" height="520" loading="lazy"></a>';
   d.body.appendChild(m);
   var bub = m.querySelector(".bub"), lines = ["Need a quote?", "Let the Genie help!", "Call or text us!", "Free, no-obligation quotes"], i = 0, reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   function talk() {
