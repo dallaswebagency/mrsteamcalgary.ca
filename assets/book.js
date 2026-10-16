@@ -2,15 +2,14 @@
 (function () {
   var CATS = [
     { id: "carpet", title: "Carpet cleaning", icon: "i-carpet", img: "carpet.webp", tint: "blue", items: [
-      ["Bedroom", "up to 150 sq ft", 69], ["Large bedroom", "up to 250 sq ft", 99],
-      ["Living room", "up to 350 sq ft", 129], ["Basement / large area", "", 199]] },
+      ["Room", "under 200 sq ft", 65], ["Big room", "up to 400 sq ft", 95], ["Hallway", "", 45]] },
     { id: "upholstery", title: "Upholstery cleaning", icon: "i-sofa", img: "upholstery.webp", tint: "gold", items: [
-      ["Sofa", "up to 7 ft", 99], ["Loveseat", "", 79], ["Chair", "", 59], ["Sectional", "", 149]] },
+      ["Dining chair", "", 25], ["Living room chair", "", 95], ["Loveseat sofa", "", 145],
+      ["3-seat sofa", "", 195], ["5-seat sectional", "", 295], ["7-seat sectional", "", 345]] },
     { id: "rugs", title: "Area rug cleaning", icon: "i-rug", img: "rugs.webp", tint: "green", items: [
-      ["Small rug", "up to 5 x 8 ft", 59], ["Medium rug", "up to 8 x 10 ft", 89],
-      ["Large rug", "up to 9 x 12 ft", 129], ["Extra large rug", "10 x 14 ft and up", 199]] }
+      ["Small rug", "3 x 5 ft max", 45], ["Medium rug", "5 x 8 ft max", 55], ["Large rug", "10 x 12 ft max", 85]] }
   ];
-  var MIN = 199, step = 1, qty = {}; // key: cat|idx|std/hvy
+  var MIN = 195, step = 1, qty = {}; // key: cat|idx|std/hvy
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var money = function (n) { return "$" + n.toLocaleString("en-CA"); };
