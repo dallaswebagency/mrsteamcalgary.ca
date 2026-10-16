@@ -310,3 +310,4 @@ body.menu-open .mascot{display:none}
 .gcard span{max-width:55%}
 
 @media (max-width:680px){.mos figure,.mos figure:first-child{aspect-ratio:16/10}}
+@media (max-width:520px){.checks.two{grid-template-columns:1fr}.bc h3{line-height:1.15}}
