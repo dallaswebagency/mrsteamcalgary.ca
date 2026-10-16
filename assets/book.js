@@ -8,7 +8,7 @@
       ["3-seat sofa", "", 195], ["5-seat sectional", "", 295], ["7-seat sectional", "", 345]] },
     { id: "rugs", title: "Area rug cleaning", icon: "i-rug", img: "rugs.webp", tint: "green", items: [
       ["Small rug", "3 x 5 ft max", 45], ["Medium rug", "5 x 8 ft max", 55], ["Large rug", "10 x 12 ft max", 85]] },
-    { id: "mattress", title: "Mattress cleaning", icon: "i-home", img: "work-bedroom.webp", tint: "blue", items: [
+    { id: "mattress", title: "Mattress cleaning", icon: "i-home", img: "mattress.webp", tint: "blue", items: [
       ["Kid mattress", "crib to full", 95], ["Adult mattress", "double to king", 145], ["Full bed frame / headboard", "", 145]] }
   ];
   var MIN = 195, step = 1, qty = {}; // key: cat|idx|std/hvy
