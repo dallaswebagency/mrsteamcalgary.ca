@@ -33,6 +33,16 @@
     location.href = "mailto:hello@steamgenie.ca?subject=" + encodeURIComponent("Coupon sign-up") + "&body=" + encodeURIComponent("Please add me to the Steam Genie coupon list.\nName: " + n.value.trim() + "\nEmail: " + m.value.trim());
   });
 
+  // franchise enquiry
+  var ff = doc.querySelector("form[data-franchise]");
+  if (ff) ff.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var ok = true, el = ff.elements;
+    ["name", "email", "phone", "city"].forEach(function (k) { var i = el[k], bad = !i.value.trim() || (k === "email" && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value.trim())); i.closest(".fld").classList.toggle("bad", bad); if (bad) ok = false; });
+    if (!ok) return;
+    ff.querySelector("[data-franchise-out]").hidden = false;
+    location.href = "mailto:hello@steamgenie.ca?subject=" + encodeURIComponent("Franchise enquiry") + "&body=" + encodeURIComponent("Name: " + el.name.value.trim() + "\nEmail: " + el.email.value.trim() + "\nPhone: " + el.phone.value.trim() + "\nArea: " + el.city.value.trim() + "\n\n" + el.msg.value.trim());
+  });
   // header: mobile menu sheet + services mega menu
   var top = doc.querySelector(".top"), burger = doc.querySelector(".burger");
   var mq = window.matchMedia("(max-width: 960px)");
