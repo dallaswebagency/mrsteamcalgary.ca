@@ -213,3 +213,7 @@
 .mascot.talk .bub{opacity:1;transform:none}
 @media (max-width:960px){.mascot{display:none}}
 body.menu-open .mascot{display:none}
+
+.mg-more{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding-top:14px;font-weight:700}.mg-more b{color:var(--navy);opacity:.7;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}.mg-more a{padding:8px 14px;border-radius:999px;background:var(--ice);color:var(--navy);min-height:44px;display:inline-flex;align-items:center}
+.rels:has(a:nth-child(3)){grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:700px){.rels:has(a:nth-child(3)){grid-template-columns:1fr}}
